@@ -1,7 +1,7 @@
 lazy val root = (project in file(".")).settings(
   scalaVersion := "2.11.7",
-  scalacOptions := ,
-  libraryDependencies := 
+  scalacOptions := compilerOptions,
+  libraryDependencies := dependencies
 )
 
 
@@ -15,7 +15,7 @@ lazy val compilerOptions = Seq(
   )
 
 lazy val dependencies = {
-lazy val scalazVersion = "7.2.1"
+lazy val scalazVersion = "7.2.2"
 Seq(
     "org.scalaz" %% "scalaz-core" % scalazVersion,
     "org.scalaz" %% "scalaz-effect" % scalazVersion
