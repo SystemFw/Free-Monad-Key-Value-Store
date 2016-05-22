@@ -17,5 +17,5 @@ object ClientCode {
   val prog2 = prog *> get("a")
 
   //at the end of the world...
-val res: String = PureInterpreter.run(prog)(Map.empty)._2
+  val res: String = PureInterpreter.run(prog)(Map.empty)._2
 }

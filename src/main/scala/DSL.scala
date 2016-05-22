@@ -2,7 +2,6 @@ package com.github.kvs
 import scalaz.Free
 
 object DSL {
-
   sealed trait KVS[K, V, A]
   object KVS {
     final case class Put[K, V](k: K, v: V) extends KVS[K, V, Unit]

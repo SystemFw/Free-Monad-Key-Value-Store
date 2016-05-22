@@ -2,7 +2,7 @@ package com.github.kvs
 
 import org.scalatest._
 import Interpreters.{PureInterpreter, ImpureInterpreter}
-import ClientCode.{prog,prog2}
+import ClientCode.{prog, prog2}
 
 class ClientCodeSpec extends WordSpec with Matchers {
 
@@ -17,7 +17,7 @@ class ClientCodeSpec extends WordSpec with Matchers {
       }
 
       "Never mutate a key value store" in {
-        val kvs: Map[String,String] = Map.empty
+        val kvs: Map[String, String] = Map.empty
         PureInterpreter.run(prog)(kvs)
         kvs shouldBe empty
       }
@@ -35,7 +35,7 @@ class ClientCodeSpec extends WordSpec with Matchers {
       }
 
       "mutate a key value store if programs do so" in {
-        val kvs: Map[String,String] = Map.empty
+        val kvs: Map[String, String] = Map.empty
         ImpureInterpreter.run(prog)(kvs)
         kvs should not be empty
       }
