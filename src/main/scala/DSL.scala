@@ -12,8 +12,10 @@ object DSL {
   // This type synonym is necessary to aid type inference
   // for higher kinded types and make monad combinators work
   // see scala bugs SI-6895 and SI-2712.
+  // Review when the SI-2712 fix is merged.
   type KVSProgram[K, V, R] = Free[KVS[K, V, ?], R]
-  // This instance cannot be inferred
+
+  // This instance cannot be inferred, will be fixed in scalaz 7.3
   implicit def kvsMonad[K, V] = Free.freeMonad[KVS[K, V, ?]]
 
   def put[K, V](k: K, v: V): KVSProgram[K, V, Unit] =

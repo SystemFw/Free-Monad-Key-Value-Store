@@ -1,4 +1,5 @@
 package com.github.kvs
+
 import scalaz.{~>, State}
 import scalaz.effect.IO
 import scalaz.syntax.functor._
