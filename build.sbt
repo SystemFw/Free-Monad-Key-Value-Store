@@ -14,7 +14,7 @@ lazy val compilerOptions = Seq(
 )
 
 lazy val dependencies = {
-  lazy val scalazVersion = "7.2.2"
+  lazy val scalazVersion = "7.2.8"
   Seq(
     "org.scalaz" %% "scalaz-core" % scalazVersion,
     "org.scalaz" %% "scalaz-effect" % scalazVersion,
@@ -25,3 +25,4 @@ lazy val dependencies = {
 resolvers += Resolver.sonatypeRepo("releases")
 
 addCompilerPlugin("org.spire-math" %% "kind-projector" % "0.7.1")
+addCompilerPlugin("com.milessabin" %% "si2712fix-plugin" % "1.2.0" cross CrossVersion.full)

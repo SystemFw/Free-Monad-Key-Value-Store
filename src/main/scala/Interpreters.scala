@@ -1,6 +1,6 @@
 package com.github.kvs
 
-import scalaz.{~>, State}
+import scalaz.{~>, Free, State}
 import scalaz.effect.IO
 import scalaz.syntax.functor._
 
@@ -15,8 +15,8 @@ object Interpreters {
       }
     }
 
-    def run[K, V, A](prog: KVSProgram[K, V, A])(st: Map[K, V]): (Map[K, V], A) =
-      prog.foldMap[State[Map[K, V], ?]](interpreter).run(st)
+    def run[K, V, A](prog: Free[KVS[K, V,?], A])(st: Map[K, V]): (Map[K, V], A) =
+      prog.foldMap(interpreter).run(st)
   }
 
   object ImpureInterpreter {
@@ -31,7 +31,7 @@ object Interpreters {
       }
     }
 
-    def run[K, V, A](prog: KVSProgram[K, V, A])(m: mutable.Map[K, V]): A =
+    def run[K, V, A](prog: Free[KVS[K, V,?], A])(m: mutable.Map[K, V]): A =
       prog.foldMap(interpreter(m)).unsafePerformIO()
   }
 

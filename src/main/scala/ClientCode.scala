@@ -7,7 +7,7 @@ object ClientCode {
   import Interpreters._
 
   // Programs can be built with for comprehensions
-  val prog: KVSProgram[String, String, String] = for {
+  val prog = for {
     _ <- put("a", "b")
     res <- get("a")
   } yield res.map(_.toUpperCase()).getOrElse("None")
